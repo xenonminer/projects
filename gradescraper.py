@@ -11,12 +11,12 @@ driver.get("https://mystudent.fjuhsd.org/Parent/LoginParent.aspx")
 email = driver.find_element_by_id('portalAccountUsername')
 password = driver.find_element_by_id('portalAccountPassword')
 
-email.send_keys("email")
+email.send_keys("email") #your email here
 
 next_button = driver.find_element_by_id('next')
 next_button.click()
 
-password.send_keys('password')
+password.send_keys('password') #your password here
 
 signin_button = driver.find_element_by_id('LoginButton')
 signin_button.click()
