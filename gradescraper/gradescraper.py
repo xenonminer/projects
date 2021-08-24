@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 payload = {
-    'portalAccountUsername': '800023403@fjuhsd.org',
-    'portalAccountPassword': 'Gauntlet$3324'
+    'portalAccountUsername': 'email', #replace with your email
+    'portalAccountPassword': 'password' #replace with your password
 }
 
 with requests.Session() as s:
