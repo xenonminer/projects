@@ -51,7 +51,7 @@ fn request(url: &String, wordlist: String, v_flag: bool) {
         let device_state = DeviceState::new();
         let keys: Vec<Keycode> = device_state.get_keys();
         if !keys.is_empty(){ // check for any keyboard input to run status
-            println!("{}/{}   {}% Done", line_counter, wordlist.lines().count(), line_counter/wordlist.lines().count());
+            println!("Progress: {}/{}   {}% Done", line_counter, wordlist.lines().count(), line_counter/wordlist.lines().count());
         }
 
     }
