@@ -47,22 +47,21 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
             </style>
             <h1 style="padding-top: 5%;">Auto File Decompressor</h1>
             <h2>Browse for a file you would like to have decompressed!</h2>
-            <form method="POST" action="/" style="padding-top: 2%;">
+            <form method="post" action="/" enctype="multipart/form-data" style="padding-top: 2%;">
                 <label for="myfile">Select a file:</label>
-                <input type="file" id="myfile" name="myfile"> 
+                <input type="file" id="myfile" name="myfile" accept="application/gzip,application/x-bzip2,application/x-lzip,application/x-lzma,application/x-7z-compressed,application/x-rar-compressed,application/x-gtar,application/zip"> 
                 <input type="submit" class="submit" value="Upload">
             </form>
             <p style="padding-top: 20px; color: red;"></p>
         </body>
     </html>
     "#; // use const instead of let to make variable global
-    
-    const error: &str = "<h1>Not a valid file type!</h1>";
 
     router
         .get("/", |_, _| Response::from_html(htmlcode))
         .post_async("/", |mut req, _ctx| async move {
             let form = req.form_data().await?;
+            dbg!(&form);
             if let Some(entry) = form.get("myfile") {
                 match entry {
                     FormEntry::File(file) => {
